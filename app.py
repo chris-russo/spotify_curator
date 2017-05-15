@@ -83,6 +83,7 @@ class PlaylistMaker(Resource):
         # endpoint
         playlist = {'tracks': []}
 
+        # Algorithm for creating playlist from keywords
         while len(keywords) > 0:
             # Create string of keywords to compare with track titles later on
             keywords_string = ' '.join(keywords)
