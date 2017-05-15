@@ -2,8 +2,8 @@
 Spotify Curator
 
 Spotify Curator is a Python 3.5.2 Flask API with a single endpoint. A POST 
-request containing text made to the Playlist Maker endpoint ('make_playlist') 
-will return a playlist, or list of Spotify URLs. 
+request containing text made to the Playlist Maker endpoint ('/make_playlist') 
+will return a playlist, i.e. a list of Spotify URLs. 
 
 For example, the text "If I can't let it go out of my mind" may return the
 playlist:
@@ -16,6 +16,7 @@ playlist:
       ]
     }
 
+See README for further details.
 
 Spotify API Endpoint Reference: Search
 https://developer.spotify.com/web-api/search-item/
