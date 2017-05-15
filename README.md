@@ -23,5 +23,14 @@ curl -X POST \
 
 Replace the value `<KEYWORDS_GO_HERE>` in the `text` key of the form body with whatever keywords you'd like.
 
+The response is a JSON containing an array of tracks, i.e. Spotify URLs:
 
-
+```
+{
+  "tracks": [
+    "https://open.spotify.com/track/7JeKXMQKm6GoLGTkNy2jZ0",
+    "https://open.spotify.com/track/5ZRxxnab9kLUqZPzoelgGP",
+    "https://open.spotify.com/track/16uXqmSMAOl0MxtgVQTGeH"
+  ]
+}
+```
