@@ -1,6 +1,6 @@
 # Spotify Curator
 
-Author: Chris Russo
+**Author:** Chris Russo
 
 ## Setup
 
