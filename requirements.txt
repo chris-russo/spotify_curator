@@ -1,0 +1,6 @@
+flask
+flask-restful
+json
+random
+re
+requests
