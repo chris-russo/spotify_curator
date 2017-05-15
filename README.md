@@ -4,9 +4,7 @@ A Python 3.5.2 Flask API for curating Spotify playlists from a text search by Ch
 
 ## Setup
 
-Before running this Flask API, install the project requirements by executing `$ pip install -r requirements.txt` in your shell.
-
-Run the API locally by executing `$ python app.py` in your shell from the root directory of this project.
+Before running this Flask API, install the project requirements by executing `$ pip install -r requirements.txt` in your shell. Run the API locally by executing `$ python app.py` in your shell from the root directory of this project.
 
 ## Endpoints
 
@@ -21,7 +19,8 @@ curl -X POST \
   -F 'text=<KEYWORDS_GO_HERE>'
 ```
 
-Replace the value `<KEYWORDS_GO_HERE>` in the `text` key of the form body with whatever keywords you'd like.
+**Note:** Replace the value `<KEYWORDS_GO_HERE>` in the `text` key of the form body with whatever keywords you'd like.
+
 
 The response is a JSON containing an array of tracks, i.e. Spotify URLs:
 
