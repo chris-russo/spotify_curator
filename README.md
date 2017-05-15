@@ -8,11 +8,11 @@ Before running this Flask API, install the project requirements by executing `$ 
 
 ## Endpoints
 
-### Playlist Maker
+### Playlist Maker: `/make_playlist`
 
 #### Request
 
-Once the API is running locally, you can submit POST requests to the Playlist Maker endpoint (/make_playlist) with the following command:
+Once the API is running locally, you can submit POST requests to the Playlist Maker endpoint (`/make_playlist`) with the following command:
 
 ```
 curl -X POST \
