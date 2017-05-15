@@ -8,6 +8,8 @@ Before running this Flask API, install the project requirements by executing `$ 
 
 ## Endpoints
 
+### Request
+
 Once the API is running locally, you can submit POST requests to the Playlist Maker endpoint (/make_playlist) with the following command:
 
 ```
@@ -21,7 +23,8 @@ curl -X POST \
 
 **Note:** Replace the value `<KEYWORDS_GO_HERE>` in the `text` key of the form body with whatever keywords you'd like.
 
-  
+### Response
+
 The response is a JSON containing an array of tracks, i.e. Spotify URLs:
 
 ```
