@@ -1,6 +1,6 @@
 # Spotify Curator
 
-**Author:** Chris Russo
+A Python 3.5.2 Flask API for curating Spotify playlists from a text search by Chris Russo.
 
 ## Setup
 
@@ -21,7 +21,7 @@ curl -X POST \
   -F 'text=<KEYWORDS_GO_HERE>'
 ```
 
-Replace the value `<KEYWORDS_GO_HERE>` in the 'text' key of the form body with whatever keywords you'd like.
+Replace the value `<KEYWORDS_GO_HERE>` in the `text` key of the form body with whatever keywords you'd like.
 
 
 
