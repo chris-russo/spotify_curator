@@ -8,7 +8,7 @@ Before running this Flask API, install the project requirements by executing `$ 
 
 ## Endpoints
 
-### Playlist Maker: `/make_playlist`
+### Playlist: `/playlist`
 
 #### Request
 
