@@ -31,7 +31,7 @@ curl -X POST \
   - Select "Request Token". No scopes are required, so you do not have to check any of these options.
   - Sign into your Spotify account and agree to Spotify's Developers: Console privacy policy.
   - You will be redirected back to the Search endpoint page and the `OAuth Token` field will now be filled in with your unique token.
-- Replace `<KEYWORDS>` in the `text` data field with whatever keywords you'd like. Try something like "You are the best thing tonight baby tomorrow I'll be gone"
+- Replace `<KEYWORDS>` in the `text` data field with whatever keywords you'd like. Try something like `"You are the best thing tonight baby tomorrow I'll be gone"`.
 
 #### Response
 
