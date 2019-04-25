@@ -12,18 +12,26 @@ Before running this Flask API, install the project requirements by executing `$ 
 
 #### Request
 
-Once the API is running locally, you can submit POST requests to the Playlist Maker endpoint (`/make_playlist`) with the following command:
+Once the API is running locally, you can submit POST requests to the Playlist endpoint (`/playlist`) with the following command:
 
 ```
 curl -X POST \
-  http://127.0.0.1:5000/make_playlist \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -H 'postman-token: 327406e6-59df-8237-6a53-c61c33995a2c' \
-  -F 'text=<KEYWORDS_GO_HERE>'
+  http://127.0.0.1:5000/playlist \
+  -H 'Authorization: Bearer <OAUTH_TOKEN>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"text": "<KEYWORDS>"``
+}'
 ```
 
-**Note:** Replace the value `<KEYWORDS_GO_HERE>` in the `text` key of the form body with whatever keywords you'd like.
+**Notes:** 
+
+- Replace `<OAUTH_TOKEN>` in the `Authorization` header with your Spotify OAuth token. You can retrieve this token [here](https://developer.spotify.com/console/get-search-item/): 
+  - Scroll down and select the "Get Token" button.  
+  - Select "Request Token". No scopes are required, so you do not have to check any of these options.
+  - Sign into your Spotify account and agree to Spotify's Developers: Console privacy policy.
+  - You will be redirected back to the Search endpoint page and the `OAuth Token` field will now be filled in with your unique token.
+- Replace `<KEYWORDS>` in the `text` key of the form body with whatever keywords you'd like.   
 
 #### Response
 

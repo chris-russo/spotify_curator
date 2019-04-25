@@ -2,7 +2,7 @@
 Spotify Curator
 
 Spotify Curator is a Python 3.5.2 Flask API with a single endpoint. A POST 
-request containing text made to the Playlist Maker endpoint ('/make_playlist') 
+request containing text made to the Playlist endpoint ('/playlist')
 will return a playlist, i.e. a list of Spotify URLs. 
 
 For example, the text "If I can't let it go out of my mind" may return the
@@ -42,7 +42,22 @@ api = Api(app)
 parser = reqparse.RequestParser(bundle_errors=True)
 
 # Add data POST argument to parser
-parser.add_argument('text', type=str, location='form')
+parser.add_argument('text', type=str, location='json')
+parser.add_argument('Authorization', location='headers')
+parser.add_argument('spotify_oauth_token', type=str, location='json')
+
+
+def get_bearer_token_from_header(authorization: str) -> str:
+    # Strip token from "Bearer <TOKEN>"
+    return authorization.split(' ')[1]
+
+
+def build_headers(oauth_token: str) -> dict:
+    return {
+        'Accept': "application/json",
+        'Content-Type': "application/json",
+        'Authorization': 'Bearer {token}'.format(token=oauth_token)
+    }
 
 
 def create_url(query_string: str) -> str:
@@ -50,8 +65,8 @@ def create_url(query_string: str) -> str:
     return url
 
 
-def search_tracks(url: str) -> dict:
-    response = requests.get(url)
+def search_tracks(url: str, headers: dict) -> dict:
+    response = requests.get(url=url, headers=headers)
     return json.loads(response.text)
 
 
@@ -67,6 +82,7 @@ class PlaylistMaker(Resource):
     def post(self):
         # Get text from POST body
         args = parser.parse_args(strict=True)
+        spotify_oauth_token = get_bearer_token_from_header(args.Authorization)
         text = args.text
 
         # Remove commas and apostrophes from text and split keywords into list
@@ -79,7 +95,7 @@ class PlaylistMaker(Resource):
         remaining_keywords = []
 
         # Create an empty list to append Spotify track URLs later on. This list
-        # will be returned when a POST request is made to the 'make_playlist'
+        # will be returned when a POST request is made to the 'playlist'
         # endpoint
         playlist = {'tracks': []}
 
@@ -93,7 +109,8 @@ class PlaylistMaker(Resource):
 
             # Make GET request to Spotify API Search endpoint
             url = create_url(query_string)
-            data = search_tracks(url)
+            headers = build_headers(spotify_oauth_token)
+            data = search_tracks(url, headers)
 
             # Create empty dictionary of tracks
             tracks = {}
@@ -147,7 +164,7 @@ class PlaylistMaker(Resource):
 
 
 # Set up API source routing
-api.add_resource(PlaylistMaker, '/make_playlist')
+api.add_resource(PlaylistMaker, '/playlist')
 
 
 if __name__ == "__main__":
